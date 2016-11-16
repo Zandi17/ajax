@@ -37,7 +37,7 @@ $(document).ready(function (){
 	function showResults(data){
 		console.log(data);
 		data.results.map(function(cancion, index){
-			var audio = new Audio();
+			var audio = new Audio("mp3");
 			audio.src = cancion.previewUrl;
 			audio.controls = true;
 			var song  = document.createElement("div");
