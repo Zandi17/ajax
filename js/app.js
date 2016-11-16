@@ -3,6 +3,7 @@ $(document).ready(function (){
 		event.preventDefault();
 		var term = cleanTerm($("#search-form input").val());
 		var results = callItunesSearch(term, showResults, noResults, error);
+		
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", "https://itunes.apple.com", true);
 		xhr.send();
