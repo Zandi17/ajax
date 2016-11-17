@@ -2,12 +2,12 @@ $(document).ready(function (){
 	$("#search-form button").click(function(event){
 		event.preventDefault();
 		var term = cleanTerm($("#search-form input").val());
-		var results = callItunesSearch(term, showResults);
+		var results = callItunesSearch(term, showResults, error);
 		});
 
 
 
-	function callItunesSearch(searchTerm, showResults){
+	function callItunesSearch(searchTerm, showResults,error){
 		startLoading();
 		// Pueden revisar el API en el link https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
 		var root = "https://itunes.apple.com/search?";
@@ -24,10 +24,10 @@ $(document).ready(function (){
 	    	    document.write(data);
     		},
 
-    		// error : function(data) {
-	    	//     console.log(data.status);
-	    	//     noResultsMessage();
-    		// },
+    		error : function(data) {
+	    	    console.log(data.status);
+	    	 document.write(data);
+    		},
 
     		complete : function(data) {
     	    stopLoading();
