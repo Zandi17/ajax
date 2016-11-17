@@ -1,4 +1,4 @@
-$(document).ready(function (){
+$(document).ready(function (){ 
 	$("#search-form button").click(function(event){
 		event.preventDefault();
 		var term = cleanTerm($("#search-form input").val());
@@ -20,7 +20,8 @@ $(document).ready(function (){
     		},
     		success : function(data) {
 	    	    console.log("todo bien");
-	    	    showResults(JSON.parse(data));
+	    	    //showResults(JSON.parse(data));
+	    	    document.write(data);
     		},
 
     		// error : function(data) {
@@ -37,7 +38,7 @@ $(document).ready(function (){
 	function showResults(data){
 		console.log(data);
 		data.results.map(function(cancion, index){
-			var audio = new Audio("audio.mp3");
+			var audio = new Audio("audio.mpeg");
 			audio.src = cancion.previewUrl;
 			audio.controls = true;
 			var song  = document.createElement("div");
@@ -65,7 +66,7 @@ $(document).ready(function (){
 		var dot1 = $(document.createElement("div")).addClass("dot1");
 		div.append(dot1);
 		div.append(dot2);
-		$("#search-results").html("").append(div);
+		$("#search-results").text("").append(div);
 	}
 
 	function stopLoading(){
